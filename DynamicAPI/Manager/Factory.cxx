@@ -1,6 +1,19 @@
 #include"Factory.h"
 #include <dlfcn.h>
 
+#ifdef __linux__
+#define SO_EXT ".so"
+#endif
+
+#ifdef __FreeBSD__
+#define SO_EXT ".so"
+#endif
+
+#ifdef __APPLE__
+#define SO_EXT ".dylib"
+#endif
+
+
 Factory* Factory::m_Instance = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -34,7 +47,7 @@ Base* Factory::Construct(std::string Name){
     return  m_Construct[Name]();
 
   else{
-    std::string libName = "lib"+Name+".dylib";
+    std::string libName = "lib"+Name+SO_EXT;
     dlopen(libName.c_str(),RTLD_NOW);
     
     if(m_Construct.find(Name)!=m_Construct.end())
