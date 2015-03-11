@@ -1,5 +1,5 @@
 # CppAPITutorial
-A minimalist example showing how to code a simple API with dynamic memory load
+A minimalist tutorial showing how to code a simple API with dynamic memory load. Nothing here is ground breaking, it is just a small exercise I did after reading a couple of article about this. The idea was to create the simplest example possible, it may not be the most effective approach, but I found it to be very readable for beginners.
 
 # Scope
 The repository contain four basic project, all doing the same thing with different approaches. The scope of the example is to run a programm that instantiate two object, respectively from ClassA and ClassB and run Method1 and Method2 of those object throught a Manager. ClassA and ClassB inherit from the pure virtual class Base, and Manager hold a vector Base pointer.
