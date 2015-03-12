@@ -30,9 +30,7 @@ endforeach(subdir)
 add_executable (main main.cxx)
 
 # add dependecies
-add_dependencies(ClassA Manager)
-add_dependencies(ClassB Manager)
-add_dependencies(main Manager ClassA ClassB)
+add_dependencies(main Manager)
 
 # link library rules
 target_link_libraries(main Manager)

@@ -2,15 +2,15 @@
 #include <dlfcn.h>
 
 #ifdef __linux__
-#define SO_EXT ".so"
+std::string SO_EXT = ".so";
 #endif
 
 #ifdef __FreeBSD__
-#define SO_EXT ".so"
+std::string SO_EXT = ".so";
 #endif
 
 #ifdef __APPLE__
-#define SO_EXT ".dylib"
+std::string SO_EXT = ".dylib";
 #endif
 
 
