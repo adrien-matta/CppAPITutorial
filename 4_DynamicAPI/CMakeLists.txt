@@ -12,25 +12,22 @@ set(CMAKE_INCLUDE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/include )
 link_directories( ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 
 # Allow inclusion of project headers
-include_directories(${CMAKE_INCLUDE_OUTPUT_DIRECTORY})
+#include_directories(${CMAKE_INCLUDE_OUTPUT_DIRECTORY})
 
 # add lib
 set(SUB_DIRECTORY Manager ClassA ClassB)
 
+set(INCLUDE_DIRECTORIES "")
 # Macro that add the sub dir and the include file install path
 foreach(subdir ${SUB_DIRECTORY})
+  # add the subdirectory
   add_subdirectory(${subdir}) 
-  file(GLOB incfiles "${subdir}/*.h")
-    foreach(incfile ${incfiles})
-      file(COPY ${incfile} DESTINATION ${CMAKE_BINARY_DIR}/include)
-    endforeach(incfile)
+  # Allow inclusion of project headers
+  include_directories(${subdir})
 endforeach(subdir)
 
 # add the executable
 add_executable (main main.cxx)
-
-# add dependecies
-add_dependencies(main Manager)
 
 # link library rules
 target_link_libraries(main Manager)
